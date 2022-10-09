@@ -30,9 +30,6 @@ function Solution(stringTest){
     ]);
 
     
-
-
-
     //checking for every value in our string test
     for(character in stringTest){
         //is this a closing paranthesis? checks with ) ] }

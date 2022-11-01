@@ -10,6 +10,9 @@ var insert = function(intervals, newInterval){
     }
     console.log(newIntervalRange);
 
+    const testNumbers = new Map(newIntervalRange);
+    console.log(testNumbers);
+
     //we need to get all the intervals that include the new interval numbers into one big array
 
     for(let x = 0; x < intervals.length; x++){

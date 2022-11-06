@@ -1,36 +1,39 @@
-/*
-definition for a binary tree node.
-function TreeNode(val, left, right){
-    this.val = (val === undefined ? 0 : val)
-    this.left = (left === undefined ? null : left)
-    this.right = (right === undefined ? null : right)
-}
+const prices = [7,1,5,3,6,4]
 
+//this works but it sucks it does not scale well if the arrays get bigger
+/*
+var maxProfit = function(prices){
+    let maxDiff = 0;
+    for(let i = 0; i + 1 < prices.length ; i++){
+        let x = i + 1
+        for(x; x < prices.length; x++){
+            let tempDiff = prices[x] - prices[i];
+            if(tempDiff > maxDiff){
+                maxDiff = tempDiff;
+            }
+        }
+
+
+    }
+    return maxDiff;
+}
 */
 
-var invertTree = function(root){
-    if(!root){
-        return root;
-    }else{
-        let temp = root.left;
-        root.left = root.right;
-        root.right = temp;
-        invertTree(root.left);
-        invertTree(root.right);
-    }
-    return root;
-}
-   
-var invertTree = function(root){
-    if(!root){
-        return root;
-    }else{
-        let temp = root.left;
-        root.left = root.right;
-        root.right = temp;
+// =================================================================================
 
-        invertTree(root.left);
-        invertTree(root.right);
+var maxProfit = function(prices){
+    let right = 1, left = 0, maxProfit = 0;
+
+    while(right < prices.length){
+        if(prices[left] < prices [right]){
+            let profit = prices[right] - prices[left];
+            maxProfit = Math.max(maxProfit, profit);
+        }else{
+            left = right;
+        }
+        right += 1;
     }
-    return root;
+    return maxProfit;
 }
+
+console.log(maxProfit(prices));

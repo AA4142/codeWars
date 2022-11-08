@@ -1,30 +1,13 @@
-//valid anagram
- const s = "anagram"; 
- const t = "naaaram";
+const nums = [-1,0,3,5,9,12];
+const target = 9
 
-var isAnagram = function(s, t){
-    if(s.length != t.length){
-        return false;
-    }
-    const letters = {};
-
-    for(let i = 0 ; i < s.length; i++){
-        if(!letters[s[i]]){
-            letters[s[i]]= 0
+var search = function(nums,target){
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] == target){
+            return i;
         }
-        letters[s[i]]++;
-
     }
-    console.log(letters);
-
-    for(let j = 0; j < t.length; j++){
-        
-        if(!letters[t[j]]){
-            return false;
-        }
-        letters[t[j]]--;
-
-    }
-    return true;
-
+    return -1;
 }
+
+console.log(search(nums, target));

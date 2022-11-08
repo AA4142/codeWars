@@ -1,39 +1,30 @@
-const prices = [7,1,5,3,6,4]
+//valid anagram
+ const s = "anagram"; 
+ const t = "naaaram";
 
-//this works but it sucks it does not scale well if the arrays get bigger
-/*
-var maxProfit = function(prices){
-    let maxDiff = 0;
-    for(let i = 0; i + 1 < prices.length ; i++){
-        let x = i + 1
-        for(x; x < prices.length; x++){
-            let tempDiff = prices[x] - prices[i];
-            if(tempDiff > maxDiff){
-                maxDiff = tempDiff;
-            }
+var isAnagram = function(s, t){
+    if(s.length != t.length){
+        return false;
+    }
+    const letters = {};
+
+    for(let i = 0 ; i < s.length; i++){
+        if(!letters[s[i]]){
+            letters[s[i]]= 0
         }
-
+        letters[s[i]]++;
 
     }
-    return maxDiff;
-}
-*/
+    console.log(letters);
 
-// =================================================================================
-
-var maxProfit = function(prices){
-    let right = 1, left = 0, maxProfit = 0;
-
-    while(right < prices.length){
-        if(prices[left] < prices [right]){
-            let profit = prices[right] - prices[left];
-            maxProfit = Math.max(maxProfit, profit);
-        }else{
-            left = right;
+    for(let j = 0; j < t.length; j++){
+        
+        if(!letters[t[j]]){
+            return false;
         }
-        right += 1;
-    }
-    return maxProfit;
-}
+        letters[t[j]]--;
 
-console.log(maxProfit(prices));
+    }
+    return true;
+
+}

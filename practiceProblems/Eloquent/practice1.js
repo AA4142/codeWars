@@ -1,23 +1,24 @@
-
 /*
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
+ * @param {number[]} prices
+ * @return {number}
  */
-const nums = [2,7,11,15]; 
-const target = 9;
+const prices = [7,1,5,3,6,4]
 
-var twoSum = function(nums, target){
-    let numsObj = {}
-    
-    for(let i = 0; i < nums.length; i++){
-        let complement = target - nums[i];
-        if(numsObj[complement] !== undefined){
-            return [numsObj[complement], i];
+ var maxProfit = function(prices) {
+    let left = 0;
+    let right = 1;
+    let maxDiff = 0;
+
+    for (right ; right < prices.length; right++){
+        if(prices[right] > prices[left]){
+            let difference = prices[right] - prices[left];
+            maxDiff = Math.max(maxDiff, difference);
         }else{
-            numsObj[nums[i]] = i;
+            left = right;
         }
     }
-}
+    return maxDiff;
+    
+};
 
-console.log(twoSum(nums,target));
+console.log(maxProfit(prices));

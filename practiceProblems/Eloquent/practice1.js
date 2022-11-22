@@ -1,24 +1,19 @@
 /*
- * @param {number[]} prices
- * @return {number}
+ * @param {number[]} nums
+ * @return {boolean}
  */
-const prices = [7,1,5,3,6,4]
+const nums = [1,2,3,4];
 
- var maxProfit = function(prices) {
-    let left = 0;
-    let right = 1;
-    let maxDiff = 0;
+ var containsDuplicate = function(nums) {
+    let numsObj = {};
 
-    for (right ; right < prices.length; right++){
-        if(prices[right] > prices[left]){
-            let difference = prices[right] - prices[left];
-            maxDiff = Math.max(maxDiff, difference);
+    for(let i = 0; i < nums.length; i++){
+        if(numsObj[nums[i]] !== undefined){
+            return true;
         }else{
-            left = right;
+            numsObj[nums[i]] = i;
         }
     }
-    return maxDiff;
-    
-};
-
-console.log(maxProfit(prices));
+    return false;
+ }
+console.log(containsDuplicate(nums));

@@ -1,21 +1,23 @@
-const nums = [-1,0,3,5,6,7,8,9,12];
-const target = 9
 
-var search = function(nums, target){
-    let left = 0;
-    let right = nums.length - 1;
-    while(left <= right){
-        let mid = Math.floor((right + left) / 2);
+/*
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+const nums = [2,7,11,15]; 
+const target = 9;
 
-        if(nums[mid] === target){
-            return mid;
-        }else if(target < nums[mid]){
-            right = mid - 1;
+var twoSum = function(nums, target){
+    let numsObj = {}
+    
+    for(let i = 0; i < nums.length; i++){
+        let complement = target - nums[i];
+        if(numsObj[complement] !== undefined){
+            return [numsObj[complement], i];
         }else{
-            left = mid + 1;
+            numsObj[nums[i]] = i;
         }
     }
-    return -1;
 }
 
-console.log(search(nums,target));
+console.log(twoSum(nums,target));

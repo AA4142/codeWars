@@ -1,79 +1,40 @@
+/*
+ * Definition for isBadVersion()
+ * 
+ * @param {integer} version number
+ * @return {boolean} whether the version is bad
+ * isBadVersion = function(version) {
+ *     ...
+ * };
+ */
 
-const nums = [-2,1,-3,4,-1,2,1,-5,4];
+/*
+ * @param {function} isBadVersion()
+ * @return {function}
+ */
+ var solution = function(isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function(n) {
+        let low = 1;
+        let high = n;
+        let mid = 0;
+        let result = n;
 
-var maxSubArray = function(nums){
-    let globalMaxSum = nums[0];
-    let localMaxSum = nums[0];
+        while(low <= high){
+            mid = low + ((low + high)/2);
+            x = isBadVerision(mid);
 
-    for(let i = 1; i < nums.length; i++){
-        localMaxSum = Math.max(nums[i], localMaxSum + nums[i]);
-        console.log(localMaxSum);
-
-        globalMaxSum = Math.max(localMaxSum, globalMaxSum);
-    }
-
-    return globalMaxSum;
-
-
-}
-
-console.log(maxSubArray(nums));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var maxSub = function(nums){
-    //declare the local and global max
-    //local max let's us loop
-    //global max will auto return if array val is less than 2;
-    let localMax = nums[0];
-    let globalMax = nums[0];
-
-    for (let i = 1; i < nums.length; i++){
-        localMax = Math.max(localMax, nums[i] + localMax);
-
-        globalMax = Math.max(globalMax, localMax);
-    }
-
-    return globalMax;
-}
-
-
-
-
-
-
-
-
-
-
-
-
+            if(x == true){
+                result = mid;
+                high = mid-1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+        return result;
+    };
+};

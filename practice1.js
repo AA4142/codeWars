@@ -1,47 +1,23 @@
-const ransomNote = "aa";
-const magazine = "aab";
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
 
+ const ransomNote = "aa";
+ const magazine = "aab"
 
  var canConstruct = function(ransomNote, magazine) {
-    let letterHolder = {};
-    for(let i = 0; i < magazine.length; i++){
-        letterHolder[magazine[i]] ? letterHolder[magazine[i]]++ : letterHolder[magazine[i]] = 1;
-    }
-    console.log(letterHolder);
+    const map1 = new Map();
 
-    for(let j = 0 ; j < ransomNote.length; j++){
-        if(!letterHolder[ransomNote[j]]){
-            return false;
-        } else{
-            letterHolder[ransomNote[j]]--
+    for(let i = 0; i < magazine.length; i++){
+        if(map1[magazine[i]]){
+            map1[magazine[i]]++;
+        }else{
+            map1[magazine[i]] = 1;
         }
     }
-    return true;
-    }
-;
+    console.log(map1);
+};
 
-console.log(canConstruct(ransomNote, magazine));
-
-
-
-let string1 = "aaabbcc";
-let ransom = "bacz";
-let emptyObj = {};
-
-
-/*
-for(let i = 0; i < string1.length; i++){
-    if(emptyObj[string1[i]]){
-        emptyObj[string1[i]]++;
-    }else{
-        emptyObj[string1[i]] = 1;
-    }
-}
-
-/*
-for (let j = 0; j < ransom.length; j++){
-    emptyObj[ransom[j]] ? emptyObj[ransom[j]]-- : console.log("false");
-}
-*/
-
-
+canConstruct(ransomNote, magazine);

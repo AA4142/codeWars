@@ -13,28 +13,11 @@
  * @return {function}
  */
  var solution = function(isBadVersion) {
-    /**
+    /*
      * @param {integer} n Total versions
      * @return {integer} The first bad version
      */
     return function(n) {
-        let low = 1;
-        let high = n;
-        let mid = 0;
-        let result = n;
-
-        while(low <= high){
-            mid = low + ((low + high)/2);
-            x = isBadVerision(mid);
-
-            if(x == true){
-                result = mid;
-                high = mid-1;
-            }
-            else{
-                low = mid + 1;
-            }
-        }
-        return result;
+        
     };
 };

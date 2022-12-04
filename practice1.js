@@ -1,23 +1,39 @@
-/**
- * @param {string} ransomNote
- * @param {string} magazine
- * @return {boolean}
- */
 
- const ransomNote = "aa";
- const magazine = "aab"
+const string = "ccc";
 
- var canConstruct = function(ransomNote, magazine) {
-    const map1 = new Map();
+ var longestPalindrome = function(s) {
+    const stringMap = {};
+    let totalLength = 0;
+    let hasOdd = 0;
 
-    for(let i = 0; i < magazine.length; i++){
-        if(map1[magazine[i]]){
-            map1[magazine[i]]++;
+    for(let i = 0; i < s.length; i++){
+        if(stringMap[s[i]]){
+            stringMap[s[i]] += 1;
         }else{
-            map1[magazine[i]] = 1;
+            stringMap[s[i]] = 1;
         }
     }
-    console.log(map1);
+
+    console.log(Object.values(stringMap).length);
+    console.log(Object.values(stringMap));
+
+    if(Object.values(stringMap).length == 1){
+        let tempVal = Object.values(stringMap);
+        console.log(tempVal);
+    }
+
+
+    Object.values(stringMap).forEach((val) => {
+        if(val >= 2){
+            let evenValues = Math.floor(val / 2);
+            totalLength = totalLength + (evenValues * 2);
+        }else{
+            hasOdd = 1;
+        }
+    });
+
+    return(totalLength + hasOdd);
+    
 };
 
-canConstruct(ransomNote, magazine);
+longestPalindrome(string);

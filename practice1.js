@@ -1,16 +1,14 @@
 
 
-let test = 15;
+let x = 22;
 
-function solution(number){
-    let sum = 0;
+var countBits = function(n){
+    let binaryValue = n.toString(2);
 
-    for(let i = 0; i < number ; i++){
-        if((i % 3 === 0) || (i % 5 === 0) || (i % 3 === 0 && i % 5 === 0)){
-            sum = sum + i;
-        }
-    }
-    return sum;
+    binaryValue = binaryValue.replace(/0/g, "");
+    console.log(binaryValue);
+    return binaryValue.length;
 }
+    
 
-console.log(solution(test));
+countBits(x);

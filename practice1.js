@@ -1,14 +1,41 @@
+let test = ['w','e','w','e','w','e','w','e','w','e'];
+
+//let test = ['w', 't'];
 
 
-let x = 22;
+function isValidWalk(walk){
+    let n = 0;
+    let e = 0;
+    let s = 0;
+    let w = 0;
 
-var countBits = function(n){
-    let binaryValue = n.toString(2);
+    if(walk.length == 1 || walk.length > 10){
+        return false
+    }
 
-    binaryValue = binaryValue.replace(/0/g, "");
-    console.log(binaryValue);
-    return binaryValue.length;
+    for(let i = 0; i < 10; i++){
+        switch(walk[i]){
+            case 'n':
+                n += 1;
+                break;
+            case 'e':
+                e += 1;
+                break;
+            case 's':
+                s += 1;
+                break;
+            case 'w':
+                w += 1;
+                break;
+        }
+
+    }
+
+    if(n != s || e != w){
+        return false
+    }else{
+        return true
+    }
 }
-    
 
-countBits(x);
+console.log(isValidWalk(test));

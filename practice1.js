@@ -1,41 +1,42 @@
-let test = ['w','e','w','e','w','e','w','e','w','e'];
+let test =[ 30,16,-47,19, -21];
 
-//let test = ['w', 't'];
+//46,-38,10,-48,-43,-39,
 
+function sortArray(array){
+    let keyPairs = {};
+    let oddArray = []
 
-function isValidWalk(walk){
-    let n = 0;
-    let e = 0;
-    let s = 0;
-    let w = 0;
-
-    if(walk.length == 1 || walk.length > 10){
-        return false
-    }
-
-    for(let i = 0; i < 10; i++){
-        switch(walk[i]){
-            case 'n':
-                n += 1;
-                break;
-            case 'e':
-                e += 1;
-                break;
-            case 's':
-                s += 1;
-                break;
-            case 'w':
-                w += 1;
-                break;
+    for (let i = 0; i<array.length; i++){
+        if(array[i] % 2 == 0){
+            keyPairs[array[i]] = i;
+        }else{
+            oddArray.push(array[i]);
         }
 
     }
+    console.log(keyPairs);
+    console.log(oddArray);
+    oddArray.sort(function(a, b) {return a-b});
+    console.log(oddArray);
 
-    if(n != s || e != w){
-        return false
-    }else{
-        return true
+    for (const property in keyPairs){
+        console.log("key pairs property" + keyPairs[property] + "property: " + property);
+        oddArray.splice(keyPairs[property], 0 , property);
     }
+    console.log(oddArray);
+
+
+
+
+    /*
+    oddArray.sort(function(a,b){return a-b});
+
+    for(const property in keyPairs){
+        oddArray.splice(keyPairs[property], 0, parseInt(property))
+    }
+    */
+
+
 }
 
-console.log(isValidWalk(test));
+sortArray(test);

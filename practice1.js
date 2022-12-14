@@ -1,30 +1,27 @@
-let test =[1, 3, 2, 8, 5, 4, 11 ];
+
+let test = [false,1,0,1,2,0,1,3,"a"];
 
 
+function moveZeros(arr) {
+    let zeroesArray = [];
 
-function sortArray(array){
-    let keyPairs = {};
-    let oddArray = []
-
-    for (let i = 0; i<array.length; i++){
-        if(array[i] % 2 == 0){
-            keyPairs[i] = array[i];
-        }else{
-            oddArray.push(array[i]);
+    const filtered = arr.filter( (x) => {
+        if(x === 0){
+            zeroesArray.push(x);
         }
+        return x !== 0;
+    });
 
-    }
-    oddArray.sort(function(a, b) {return a-b});
-    for (const property in keyPairs){
-        oddArray.splice(property, 0 , keyPairs[property]);
-    }
+    console.log(zeroesArray);
 
-    if(oddArray == array){
-        return undefined;
-    }else{
-        return oddArray;
+    
+    for(const value in zeroesArray){
+        filtered.push(zeroesArray[value]);
     }
 
-}
+    console.log(filtered);
 
-sortArray(test);
+    return
+  }
+
+moveZeros(test);

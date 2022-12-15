@@ -1,27 +1,36 @@
+let test = "(((({{";
 
-let test = [false,1,0,1,2,0,1,3,"a"];
-
-
-function moveZeros(arr) {
-    let zeroesArray = [];
-
-    const filtered = arr.filter( (x) => {
-        if(x === 0){
-            zeroesArray.push(x);
-        }
-        return x !== 0;
-    });
-
-    console.log(zeroesArray);
-
-    
-    for(const value in zeroesArray){
-        filtered.push(zeroesArray[value]);
+function validBraces(braces){
+    //key pair values "(){}[]"
+    if(braces.length % 2 != 0){
+        return false;
     }
+    let map = { 
+        ")" : "(",
+        "}" : "{",
+        "]" : "["
+     }
 
-    console.log(filtered);
+     let bracketHolder = [];
 
-    return
+     for (let i = 0 ; i < braces.length;  i++){
+
+        if(braces[i] == map[")"] ||braces[i] == map["}"] ||  braces[i] == map["]"]){
+            bracketHolder.push(braces[i])
+        }else{
+            if(map[braces[i]] == bracketHolder[(bracketHolder.length - 1)]){
+                bracketHolder.pop();
+            } else{
+                return false;
+            }
+
+        }
+     }
+     if(bracketHolder.length < 1){
+        return true
+     }else{
+        return false;
+     }
   }
 
-moveZeros(test);
+  console.log(validBraces(test));
